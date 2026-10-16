@@ -44,3 +44,10 @@ The trade-off: the root directory must exist when the guard is constructed, and 
 POSIX only. The guard refuses backslash separators rather than silently rewriting them. If you are on Windows, normalize your paths to forward slashes before constructing a `PathGuard` — mixing separator styles inside a security primitive is exactly the kind of ambiguity that produces injection bugs, so this library picks one rule and enforces it.
 
 The root must be absolute and must exist. Inputs must be absolute. The guard does not guess a working directory for you, because relying on `process.cwd()` inside a security check is a frequent source of subtle bugs.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
