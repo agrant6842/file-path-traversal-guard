@@ -1,6 +1,6 @@
 {
   "name": "file-path-traversal-guard",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Validates that a resolved file path stays within a designated root directory, rejecting symlink escapes and dot-segment escapes.",
   "type": "module",
   "main": "src/index.js",
